@@ -1,30 +1,35 @@
 const inquirer = require("inquirer");
 const fs = require ("fs");
 
-const questions = [
+const employeeQuestions = [
     {
         type: "input",
-        name: "name",
+        name: "nameInput",
         message: "What is the employee's name?"
     },
 
     {
         type: "input",
-        name: "ID",
+        name: "idInput",
         message: "What is the employee's ID?"
     },
 
     {
         type: "input",
-        name: "email",
+        name: "emailInput",
         message: "What is the employee's email address?"
     }
 ];
 
 function init() {
-    inquirer.prompt(questions)
-    .then(function(name, ID, email){
-        console.log (name,ID,email);
+    inquirer.prompt(employeeQuestions)
+    .then(function({nameInput, idInput, emailInput}){
+        console.log (nameInput);
+        console.log (idInput);
+        console.log (emailInput);
+        const newEmployee = new Employee (nameInput, idInput, emailInput);
+        console.log(newEmployee);
+
     })
     .then(function(){
 
@@ -32,3 +37,12 @@ function init() {
 };
 
 init();
+
+function Employee(nameInput, idInput, emailInput){
+    this.name = nameInput;
+    this.id = idInput;
+    this.email = emailInput;
+
+};
+
+
