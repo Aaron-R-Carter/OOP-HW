@@ -1,48 +1,61 @@
 const inquirer = require("inquirer");
-const fs = require ("fs");
+const fs = require("fs");
 
-const employeeQuestions = [
+const questions = [
     {
         type: "input",
-        name: "nameInput",
+        name: "name",
         message: "What is the employee's name?"
     },
 
     {
         type: "input",
-        name: "idInput",
+        name: "id",
         message: "What is the employee's ID?"
     },
 
     {
         type: "input",
-        name: "emailInput",
+        name: "email",
         message: "What is the employee's email address?"
+    },
+
+    {
+        type: "list",
+        name: "role",
+        message: "What is the employee's role?",
+        choices: ["manger", "engineer", "intern"]
     }
 ];
 
+function Employee(name, id, email, role) {
+    this.name = name;
+    this.id = id;
+    this.email = email;
+    this.role = role
+
+};
+
 function init() {
-    inquirer.prompt(employeeQuestions)
-    .then(function({nameInput, idInput, emailInput}){
-        console.log (nameInput);
-        console.log (idInput);
-        console.log (emailInput);
-        const newEmployee = new Employee (nameInput, idInput, emailInput);
-        console.log(newEmployee);
 
-    })
-    .then(function(){
+    inquirer.prompt(questions)
+        .then(({ name, id, email, role }) => {
+            const e = new Employee(name, id, email, role);
+            console.log(e);
 
-    })
+        })
+        .then()
 };
 
 init();
 
-function Employee(nameInput, idInput, emailInput){
-    this.name = nameInput;
-    this.id = idInput;
-    this.email = emailInput;
+// function getName(){
+//  console.log(Employee.name)
+//  return(Employee.name)
+// }
 
-};
+// getName();
+
+
 
 
