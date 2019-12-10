@@ -1,61 +1,37 @@
 const inquirer = require("inquirer");
-const fs = require("fs");
 
-const questions = [
-    {
-        type: "input",
-        name: "name",
-        message: "What is the employee's name?"
-    },
+class Employee {
 
-    {
-        type: "input",
-        name: "id",
-        message: "What is the employee's ID?"
-    },
+    constructor(name, id, email) {
+        this.name = name;
+        this.id = id;
+        this.email = email;
 
-    {
-        type: "input",
-        name: "email",
-        message: "What is the employee's email address?"
-    },
+    };
 
-    {
-        type: "list",
-        name: "role",
-        message: "What is the employee's role?",
-        choices: ["manger", "engineer", "intern"]
-    }
-];
+    getName() {
+        return this.name;
+    };
 
-function Employee(name, id, email, role) {
-    this.name = name;
-    this.id = id;
-    this.email = email;
-    this.role = role
+    getId() {
+        return this.id;
+    };
+
+    getEmail() {
+        return this.email;
+    };
+
+    getRole() {
+        return "Employee";
+    };
 
 };
 
-function init() {
 
-    inquirer.prompt(questions)
-        .then(({ name, id, email, role }) => {
-            const e = new Employee(name, id, email, role);
-            console.log(e);
-
-        })
-        .then()
-};
-
-init();
-
-// function getName(){
-//  console.log(Employee.name)
-//  return(Employee.name)
-// }
-
-// getName();
+module.exports = Employee;
 
 
 
 
+
+// recursive functions week 10 mini project

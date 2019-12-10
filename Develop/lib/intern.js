@@ -1,48 +1,20 @@
-const inquirer = require("inquirer");
-const fs = require ("fs");
+const Employee = require("./employee");
 
-const engineerQuestions = [
-    {
-        type: "input",
-        name: "name",
-        message: "What is the engineers's name?"
-    },
+class Intern extends Employee {
 
-    {
-        type: "input",
-        name: "id",
-        message: "What is the engineers's ID?"
-    },
+    constructor(name, id, email, school ) {
+        super(name, id, email);
+        this.school = school;
+    };
 
-    {
-        type: "input",
-        name: "email",
-        message: "What is the engineers's email address?"
+    getRole(){
+        return "Intern";
+    };
+
+    getSchool(){
+       return this.school;
     }
-];
-
-function init() {
-    inquirer.prompt(engineerQuestions)
-    .then(function({name, id, email}){
-        console.log (name);
-        console.log (id);
-        console.log (email);
-        const e = new Engineer (name, id, email);
-        console.log(e);
-
-    })
-    .then(function(){
-
-    })
-};
-
-init();
-
-function Engineer(name, id, email){
-    this.name = name;
-    this.id = id;
-    this.email = email;
 
 };
 
-
+module.exports = Intern;

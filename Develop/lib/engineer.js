@@ -1,35 +1,21 @@
-const inquirer = require("inquirer");
-const fs = require ("fs");
+const Employee = require("./employee");
 
-const questions = [
-    
-    {
-        type: "input",
-        name: "gitHub",
-        message: "What is the engineers's GitHub username?"
-    }
-];
+class Engineer extends Employee {
 
-function init() {
-    inquirer.prompt(questions)
-    .then(function({gitHub}){
-        const e = new Engineer (gitHub);
-        console.log(e);
-
-    })
-    .then(function(){
-        // console.log(e);
-        // return(e);
+    constructor(name, id, email, github) {
+        super(name, id, email);
+        this.github = github;
         
+    };
 
-    })
+    getRole(){
+        return "Engineer";
+    };
+
+    getGithub(){
+       return this.github;
+    }
+
 };
 
-init();
-
-function Engineer(gitHub){
-    this.gitHub = gitHub;
-
-};
-
-
+module.exports = Engineer;
